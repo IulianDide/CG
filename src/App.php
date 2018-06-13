@@ -13,6 +13,8 @@ class App {
 	/** Deck $deck */
 	protected $deck;
 	
+	const CARD_NUMBER_TO_DEAL = 7;
+	
 	public function __construct(array $players) {
 		
 		//initialise the logger
@@ -41,7 +43,7 @@ class App {
 		$this->deck = new Deck();
 		for ($i = Card::$minCardNumer; $i<= Card::$maxCardNumer; $i++) {
 			foreach (Card::$colourData as $type => $colour) {
-				$this->deck->push(new Card($i, $type));
+				$this->deck->append(new Card($i, $type));
 			}
 		}
 	}
@@ -49,7 +51,22 @@ class App {
 	
 	public function play() {
 		
+		$this->dealCards();
+		
 		$this->logger->printLogs();
+	}
+	
+	protected function dealCards() {
+		
+		foreach($this->players as $player) {
+			for ($i=1; $i <= self::CARD_NUMBER_TO_DEAL; $i++) {
+				$player->takeCard($this->deck->current());
+				$this->deck->next();
+			}
+			
+			$this->loggger->logMessage('Freek has been dealt:'.$deck);
+		}
+		
 	}
 	
 }

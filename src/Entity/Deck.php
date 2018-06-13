@@ -1,16 +1,13 @@
 <?php
 require_once __DIR__ . '/Card.php';
 
-class Deck {
-	
-	public $cards = [];
+class Deck extends ArrayIterator {
 	
 	public function __construct() {
-		return $this;
+		parent::__construct();
 	}
 	
-	public function push(Card $card) {
-		$this->cards[] = $card;
+	public function __toString() {
+		return var_dump($this);
 	}
-	
 }

@@ -8,7 +8,7 @@ class Card {
 	
 	public static $colourData = [
 		'hearts' 	=> 1,	//red
-		'diamonds' 	=> 1, 	//red
+		'diams' 	=> 1, 	//red
 		'clubs'		=> 0,	//black
 		'spades'	=> 0	//black
 	];
@@ -44,8 +44,10 @@ class Card {
 		return $colourData($this->symbol);
 	}
 	
-	public function getCardFriendlyName() {
-		$name = $this->type;
+	public function __toString() {
+		$name = '&'.$this->symbol.';';
 		$name .= (isset(self::$cardNumbersMapping[$this->number])) ? self::$cardNumbersMapping[$this->number] : $this->number;
+		
+		return $name;
 	}
 }
