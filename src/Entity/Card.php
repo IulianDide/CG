@@ -41,7 +41,7 @@ class Card {
 	}
 	
 	public function getColour() {
-		return $colourData($this->symbol);
+		return $this::$colourData[$this->symbol];
 	}
 	
 	public function __toString() {

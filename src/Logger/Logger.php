@@ -21,11 +21,11 @@ class Logger {
 	}
 	
 	public function printLogs() {
-		$output = "<ul>";
+		$output = "<ul style='list-style-type:none;'>";
 		foreach ($this->getLogs() as $logMessage) {
-			echo '<li>'.$logMessage.'</li>';
+			$output .= '<li>'.$logMessage.'</li>';
 		}
-		$output = "</ul>";
+		$output .= "</ul>";
 		print($output);
 	}
 }
