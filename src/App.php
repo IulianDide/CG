@@ -102,13 +102,13 @@ class App {
 				
 				if ($matchingCard) {
 					$this->topCard = $matchingCard;
+					$this->logger->logMessage($this->players[$currentPlayer]->getName() . '  plays ' . $matchingCard);
 					if ($this->players[$currentPlayer]->isWinner()) {
 						$this->winner = $this->players[$currentPlayer];
-						$this->logger->logMessage($this->players[$currentPlayer]->getName() . '  plays ' . $matchingCard);
 						$this->logger->logMessage($this->players[$currentPlayer]->getName() . ' has won.');
 						break;
 					}
-					$this->logger->logMessage($this->players[$currentPlayer]->getName() . '  plays ' . $matchingCard);
+					
 				} else {
 					$this->players[$currentPlayer]->takeCard($this->deck->current());
 					$this->logger->logMessage($this->players[$currentPlayer]->getName() . '  does not have a suitable card, taking from deck:' . $this->deck->current());
